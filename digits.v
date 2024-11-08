@@ -18,6 +18,7 @@ always @(posedge clk) begin
         end 
 		else begin
             temp_count <= 0;
+            thousands  <=3'b000;
         end
 
         ones <= temp_count % 10;
