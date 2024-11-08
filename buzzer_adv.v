@@ -25,7 +25,7 @@ reg [31:0] countA=0,countB=0,countC=0,count=0;
 reg [31:0] temp=0;
 
 digits d1(clk,score_A,score_B,score_C,SA,SB,SC,ones,tens,thousands);
-seven_seg s1(clk,ones,tens,thousands,seg,digit);
+seven_seg s1(clk,state,ones,tens,thousands,seg,digit);
 
 always @(posedge clk) 
 begin
@@ -39,7 +39,7 @@ begin
                     if(A) 
                     begin
                         flag=1;
-                        if(countA<5)//50_000_000
+                        if(countA<50_000_000)//50_000_000
                             countA<=countA+1;
                          else begin
                             state<=press_done;
@@ -49,7 +49,7 @@ begin
                     if(B) 
                     begin
                         flag=1;
-                        if(countB<5)//50_000_000
+                        if(countB<50_000_000)//50_000_000
                             countB<=countB+1;
                          else begin
                             state<=press_done;  
@@ -59,7 +59,7 @@ begin
                     if(C) 
                     begin
                         flag=1;
-                        if(countC<5)//50_000_000
+                        if(countC<50_000_000)//50_000_000
                             countC<=countC+1;
                          else begin
                             state<=press_done;  
@@ -79,7 +79,7 @@ begin
             countB<=0;
             countC<=0;
             if(win==1) begin
-                if (temp<30) begin //300_000_000
+                if (temp<300_000_000) begin //300_000_000
                     led<=3'b100;
                     temp<=temp+1;
                 end
@@ -90,7 +90,7 @@ begin
                 end
             end
             else if(win==2) begin
-                if (temp<30) begin //300_000_000
+                if (temp<300_000_000) begin //300_000_000
                     led<=3'b010;
                     temp<=temp+1;
                 end
@@ -101,7 +101,7 @@ begin
                 end
             end
             else if(win==3) begin
-                if (temp<30) begin  //300_000_000
+                if (temp<300_000_000) begin  //300_000_000
                     led<=3'b001;
                     temp<=temp+1;
                 end
@@ -117,21 +117,21 @@ begin
             if(score_on) begin
                 if(score_A) begin
                     if(inc) begin
-                        if(count<25) begin //25_000_000
+                        if(count<25_000_000) begin //25_000_000
                             count=count+1;
                         end
                         else begin
-                            if(count==25)//25_000_000
+                            if(count==25_000_000)//25_000_000
                                 SA=SA+1;
                             count<=0;
                         end
                     end
                     else if(dec) begin
-                        if(count<25) begin//25_000_000
+                        if(count<25_000_000) begin//25_000_000
                             count=count+1;
                         end
                         else begin
-                            if(count==25)  begin//25_000_000
+                            if(count==25_000_000)  begin//25_000_000
                                 if(SA>0)
                                     SA=SA-1;
                                 count<=0;
@@ -143,21 +143,21 @@ begin
                 end
                 else if(score_B) begin
                     if(inc) begin
-                        if(count<25) begin //25_000_000
+                        if(count<25_000_000) begin //25_000_000
                             count<=count+1;
                         end
                         else begin
-                            if(count==25) //25_000_000
+                            if(count==25_000_000) //25_000_000
                                 SB<=SB+1;
                             count<=0;
                         end
                     end
                     else if(dec) begin
-                        if(count<25) begin //25_000_000
+                        if(count<25_000_000) begin //25_000_000
                             count<=count+1;
                         end
                         else begin
-                            if(count==25) begin //25_000_000 
+                            if(count==25_000_000) begin //25_000_000 
                                 if(SB>0)
                                     SB<=SB-1;
                                 count<=0;
@@ -169,21 +169,21 @@ begin
                 end
                 else if(score_C) begin
                     if(inc) begin
-                        if(count<25) begin //25_000_000
+                        if(count<25_000_000) begin //25_000_000
                             count=count+1;
                         end
                         else begin
-                            if(count==25)  //25_000_000
+                            if(count==25_000_000)  //25_000_000
                                 SC=SC+1;
                             count<=0;
                         end
                     end
                     else if(dec) begin
-                        if(count<25) begin //25_000_000
+                        if(count<25_000_000) begin //25_000_000
                             count=count+1;
                         end
                         else begin
-                            if(count==25) begin//25_000_000
+                            if(count==25_000_000) begin//25_000_000
                                 if(SC>0)
                                     SC=SC-1;
                                 count<=0;
