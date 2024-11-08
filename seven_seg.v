@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module seven_seg(input clk_100MHz,input [3:0]ones,tens,input [2:0] thousands,output reg [0:6] seg,output reg [3:0] digit);
+module seven_seg(input clk_100MHz,input [1:0] state,input [3:0]ones,tens,input [2:0] thousands,output reg [0:6] seg,output reg [3:0] digit);
 
     parameter ZERO  = 7'b000_0001;  // 0
     parameter ONE   = 7'b100_1111;  // 1
@@ -18,7 +18,7 @@ module seven_seg(input clk_100MHz,input [3:0]ones,tens,input [2:0] thousands,out
     
     always @(posedge clk_100MHz) begin
                                        // 1ms x 4 displays = 4ms refresh period
-		if(digit_timer == 9) begin  //99_999       // The period of 100MHz clock is 10ns (1/100,000,000 seconds)
+		if(digit_timer == 99_999 ) begin  //99_999       // The period of 100MHz clock is 10ns (1/100,000,000 seconds)
 			digit_timer <= 0;                   // 10ns x 100,000 = 1ms (99_999)
 			digit_select <=  digit_select + 1;
 		end
@@ -73,12 +73,28 @@ module seven_seg(input clk_100MHz,input [3:0]ones,tens,input [2:0] thousands,out
                     end
                     
             2'b11 : begin       // MINUTES ONES DIGIT
-                        case(thousands)
-                            3'b100 : seg = 7'b000_1000;
-                            3'b010 : seg = 7'b000_0000;
-                            3'b001 : seg = 7'b000_0001;
+                        if(state==2'b10) begin
+                            case(thousands)
+                                3'b000 : seg =7'b111_1110;
+                                3'b100 : seg = 7'b000_1000;
+                                3'b010 : seg = 7'b000_0000;
+                                3'b001 : seg = 7'b011_0001;
+                            
 							
-                        endcase
+                            endcase
+                         
+                        end
+                        else if(state==0 && thousands==3'b000)
+                                seg=7'b111_1110;
+                        else if(thousands!=0) begin
+                            case(thousands)
+                                  3'b100 : seg = 7'b000_1000;
+                                  3'b010 : seg = 7'b000_0000;
+                                  3'b001 : seg = 7'b011_0001;
+                                           
+                            endcase
+                        end
+                        
                     end
         endcase
 
