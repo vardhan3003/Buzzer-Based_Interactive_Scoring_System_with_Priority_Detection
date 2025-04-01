@@ -1,6 +1,6 @@
 1. INTRODUCTION
 
-This project involves the design and implementation of a Buzzer-Based Interactive Scoring System on an FPGA using Verilog. The system is engineered to handle real-time input detection and prioritization with microsecond-level precision, ensuring fair and accurate scoring. It supports multiple teams competing for the fastest response and provides immediate feedback through LEDs and a buzzer. The following sections detail the operation and implementation of the scoring system.
+This project involves the design and implementation of a Buzzer-Based Interactive Scoring System on an FPGA using Verilog. The system is engineered to handle real-time input detection and prioritization with nanosecond-level precision, ensuring fair and accurate scoring. It supports multiple teams competing for the fastest response and provides immediate feedback through LEDs as a buzzer. The following sections detail the operation and implementation of the scoring system.
 
 
 2. STATES OF OPERATION
