@@ -27,12 +27,14 @@ score_A, score_B, score_C: Selects the team whose score is to be adjusted in sco
 inc: Increments the selected team's score.
 dec: Decrements the selected team's score.
 reset: Resets all counters and timers to their default state.
+
 3.2 LEDs:
 
 Indicates the winning team in the Press Done State:
 LED[2]: Team A wins.
 LED[1]: Team B wins.
 LED[0]: Team C wins.
+
 3.3 Seven-Segment Display:
 
 Displays the scores for teams A, B, and C in real-time.
