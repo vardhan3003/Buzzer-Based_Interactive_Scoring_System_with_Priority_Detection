@@ -47,3 +47,6 @@ High Precision: Detects button press timings down to nanoseconds, ensuring fair 
 Dynamic Scoring: Allows real-time score updates for multiple teams with instant display feedback.
 Interactive Feedback: Uses LEDs and buzzers to provide clear indications of states and events.
 Robust Design: Includes debounce logic to eliminate false triggers, ensuring reliable operation.
+
+![image](https://github.com/user-attachments/assets/0e387e2d-1a97-42cc-9f92-caf45d2c73ad)
+
